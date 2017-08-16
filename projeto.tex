@@ -90,13 +90,7 @@
 				\fontsize{50}{50} \usefont{OT1}{phv}{b}{n} \color{DarkRed} \selectfont 
 				}
 
-%% ====================================
-%% ====================================
-%% mude o titulo  do projeto
-%% ====================================
-%% ====================================
-
-\title{Modelo para Projeto de cabeamento estruturado}					% Title of your article goes here
+\title{Projeto de cabeamento estruturado para biblioteca de universidade}					% Title of your article goes here
 
 %% ====================================
 
@@ -106,7 +100,7 @@
 
 \preauthor{\begin{flushleft}
 					\large \lineskip 0.5em \usefont{OT1}{phv}{b}{sl} \color{DarkRed}}
-\author{Alexandre L'Erario, Fulano de Tal }  	% Author name goes here
+\author{Matheus Garcia Bessegato}  	% Author name goes here
 
 
 \postauthor{\footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black} 
@@ -133,9 +127,7 @@
 %% mude o resumo  do projeto
 %% ====================================
 %% ====================================
-\initial{E}\textbf{ste modelo exemplifica como um projeto de cabeamento estruturado deve ser elaborado. No projeto real,
-	esta seção deve indicar qual seria o propósito do projeto: reestruturar, criar uma estrura sem uma anterior, apresentar uma estrutura ficticia ou real  etc. Deve também conter sua cobertura (quais elementos este projeto aborda): Levantamento da planta física, Elaboração da planta lógica, Equipamentos passivos da rede (memorial descritivo), Levantamento de quantidade/custo, Plano de Certificação e orçamento.
-	No caso de projetos reais, deve conter também o escopo. No projeto real deve conter quais as atividades serão executadas e quais os responsáveis. Deve apresentar também as restrições que serão cumpridas e um possível acordo de nível de serviço (SLA).}
+\initial{O}\textbf{ presente documento descreve o projeto de cabeamento estruturado de uma biblioteca para uma universidade fictícia, que será chamada de UFOPR (Universidade Fictícia do Oeste do Paraná). O corrente projeto parte de uma proposta de planta física para a biblioteca e busca apresentar a elaboração da planta lógica, com todos os equipamentos passivos e ativos da rede, levantamento de quantidades e custo, plano de certificação da rede e orçamento, com base nos usuários e atividades que serão desenvolvidas no ambiente.}
 
 %% ====================================
 \begin{figure}
@@ -167,38 +159,70 @@
 %% ====================================
 %% ====================================
 \section{Introdução}
-Explique nesta primeira seção qual seria o perfil do caso. Perfil do cliente, quantidade de colaboradores, quantidade de equipamentos de TI atualmente.
+A UFOPR é uma instituição fictícia localizada na região oeste do Paraná que conta com aproximadamente 800 alunos e 120 funcionários, entre professores e técnicos administrativos.
 
-Indique também nesta seção o escopo do projeto.
+A instituição conta com uma biblioteca provisória, funcionando em um ambiente pequeno e que não atende às demandas da comunidade acadêmica, e planeja construir um novo espaço, adequado para incentivar e dar conforto aos estudos de seus alunos.
 
-Apresente um overview do parque tecnológico do caso.
+O espaço atual da biblioteca conta com apenas 3 computadores para uso dos alunos, 2 ramais VoIP e 6 computadores para os funcionários da mesma. Há instalado no local um switch 10/100 de 24 portas gerenciável para oferecer acesso à Internet no ambiente e não há acesso sem fio.
+
+O novo ambiente contará com uma sala de estudos com 20 computadores e 8 computadores para funcionários, além de acesso sem fio à Internet e 4 ramais VoIP. O ambiente será monitorado por 8 câmeras IP internas.
+
+O atual parque tecnológico da universidade conta com ao menos um computador para cada funcionário, um computador por sala de aula, 6 laboratórios com 41 computadores cada, cobertura Wi-Fi em todo o ambiente administrativo, salas de professores, laboratórios e em salas de aula, monitoramento com 60 câmeras IP e telefonia VoIP com 120 ramais. Os switches são todos gerenciáveis, 10/100 ou 10/100/1000, com divisões em VLANs. O Data Center conta com dois racks de 42U, dois switches CISCO 3750x, Distribuidor Interno Óptico (DIO), um link de dados de 40Mbps e um link de dados de 100Mbps, um Storage NetApp com duas gavetas de expansão, com capacidade de armazenamento aproximada de 50TB e 6 servidores Dell virtualizados, destinados a prover os serviços de impressão, \textit{Active Directory}, \textit{gateway}, antivírus, VoIP, sistema de monitoramento de câmeras, ambiente de ensino a distância, dentre outros.
+
+O presente projeto abrange o estado atual da biblioteca da universidade, as necessidades para a nova biblioteca, seu projeto físico e lógico, um memorial descritivo dos equipamentos passivos que serão utilizados, planilha de orçamentos de materiais, cronograma de implantação, plano de certificação e plano de manutenção.
+
 \subsection{Benefícios}
-Explique quais seriam os benefícios provenientes após a execução deste projeto.
-
+A execução desse projeto trará maior conforto para os usuários e colaboradores da biblioteca da universidade, bem como deve melhorar a qualidade da aprendizagem, com o aumento do número de computadores para estudo e a oferta de rede sem fio para a conexão com equipamentos pessoais. A concorrência por espaço e equipamentos será menor ou inexistente e a qualidade do serviço oferecido será aprimorada.
 
 \section{Estado atual}
-Aprente o estado atual da rede. Caso não tenha rede, desconsiderar esta seção.
+A rede da atual biblioteca conta com:
 
-Caso tenha rede, deixe claro:
 \begin{itemize}
-	\item os passivos de rede atuais:path panels, cabos, etc..;
-	\item as principais reclamações dos usuários. Qual o principal motivo da reestruturação? Efetue uma pesquisa junto aos colaboradores para determinar quais problemas a rede apresenta.
-	\item Observações. Analise a rede e verifique se há estruturas que não se enquadram nas normas ou que indicam suspeita de problemas.
+	\item 01 \textit{patch panel} de 24 portas Furukawa categoria 5e;
+	\item cabeamento Furukawa categoria 5e;
+	\item 01 switch CISCO 10/100 gerenciável de 28 portas;
+	\item 01 rack de parede de 4U;
 \end{itemize}
 
+As principais reclamações são de lentidão para navegar na Internet, falta de rede sem fio e falta de estrutura física e lógica para instalação de novos computadores. Todos esses problemas serão solucionados com a execução do presente projeto no novo espaço físico.
+
 \section{Requisitos}
-Crie uma enumeração dos requisitos do projeto.
+O presente projeto deve abranger no mínimo:
+
+\begin{itemize}
+	\item 20 pontos de rede para estações de estudo de alunos;
+	\item 08 pontos de rede para estações de trabalho de funcionários;
+	\item 02 pontos de rede para instalação de \textit{Access Points};
+	\item 08 pontos de rede para instalação de câmeras IP internas;
+	\item 02 pontos de rede para instalação de impressoras;
+	\item 04 pontos de rede para instalação de telefones IP;
+	\item 01 \textit{patch panel} Furukawa de 48 portas categoria 6;
+	\item 01 \textit{switch} Cisco 10/100/1000 de 52 portas gerenciável;
+	\item 02 \textit{Access Points} Cisco;
+	\item 08 câmeras Axis de dome fixo;
+	\item cabeamento Furukawa categoria 6;
+	\item 88 \textit{patch cords} Furukawa categoria 6 de 1,5m;
+	\item 01 DIO;
+	\item 01 rack de parede de 8U;
+	\item organizador de cabos;
+	\item canaletas, tampas, caixa de passagem, tomadas e espelhos Dutotec;
+\end{itemize}
 
 \section{Usuários e Aplicativos}
-Explique nesta seção os usuários atuais e o perfil de crescimento, se por exemplo, há estimativa na evolução da empresa no que tange a quantidade de usuários, pontos de redes, equipamentos.
  
-
 \subsection{Usuários}
-Crie uma relação da quantidade, perfil de usuários de seu projeto.
+Os usuários da biblioteca podem ser classificados em dois tipos: estudantes ou colaboradores.
+
+O número de estudantes da universidade, como informado anteriormente, está próximo a 800 e não há uma estimativa de aumento desse número devido ao espaço físico total da universidade não ser capaz de captar mais alunos e/ou turmas/cursos, logo, estima-se que o número de 20 computadores será capaz de suprir a demanda total da universidade.
+
+Com o aumento do espaço físico da biblioteca, estima-se que o número de colaboradores poderá ser aumentado para até 08, o que já é calculado no presente projeto.
+
+Como o número geral de usuários e equipamentos não deve ser alterado além do estimado, não haverá necessidade de aumento no número de pontos de rede e equipamentos. 
 
 \subsection{Aplicativos}
-Crie uma relação dos aplicativos e seus níveis críticos de uso.
+Para o desenvolvimento das atividades de pesquisa e execução de aplicativos para demais trabalhos acadêmicos, os alunos necessitam de conexão Ethernet Gigabit.
 
+Para acesso aos sistemas da universidade e da biblioteca, os colaboradores necessitam de conexão Ethernet Gigabit.
 
 \section{Estrutura predial existente}
 
